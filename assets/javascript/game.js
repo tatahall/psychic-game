@@ -20,11 +20,11 @@ var userGuess = document.getElementById("userGuess");
 var wins = +1;
 var losses = +1;
 
-function compare() {
+function compare(userGuess, computerGuess) {
 if(userGuess == computerGuess){
-document.getElementById("#wins").value;
+document.getElementById("#wins");
 document.write(wins++)
-
+console.log(compare)
 }
 else{
 document.getElementById("#remguess")
