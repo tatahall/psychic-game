@@ -3,8 +3,12 @@ var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
 console.log(letters)
 
 //create a variable for computer's guess
-var computerGuess;
-var computerGuess = letters[Math.floor(Math.random() * letters.length)];
+var computerGuess; 
+var assignComputerGuess = function (){ 
+    computerGuess = letters[Math.floor(Math.random() * letters.length)];}
+
+assignComputerGuess();
+
 console.log(computerGuess)
 
 //create variable for user guess
@@ -23,7 +27,7 @@ var winsText = document.getElementById("wins-text");
 var loseText = document.getElementById("lose-text");
 var remainingGuessText = document.getElementById("remaining-text");
 
-var userGuess;
+var userGuess = 0;
 
 userChoiceText.textContent = "Your Guess: " + userGuess;
 winsText.textContent = "Wins: " + wins;
@@ -41,11 +45,22 @@ var totalUserGuess = [];
 //choose again and the user text should update with new choice.
 //want user to have 9 chances.
 
+var gameReset = function (){
+    assignComputerGuess();
+    console.log("new guess " + computerGuess);
+    totalUserGuess = [];
+    console.log("empty array " + totalUserGuess);
+    remainingGuess = 9;
+}
+
 document.onkeyup = function (event) {
     userGuess = event.key
 
     if (userGuess === computerGuess) {
+        totalUserGuess.push(userGuess);
         wins++;
+        gameReset();
+        //reset game -- which means computer picks a new guess
     }
     else {
         remainingGuess--;
@@ -53,6 +68,8 @@ document.onkeyup = function (event) {
     }
     if (remainingGuess === 0) {
         lose++;
+        gameReset();
+        //reset game? -- computer picks a new guess and remainingGuess is reset to 0
     }
 
     userChoiceText.textContent = "Your Guesses so far: " + totalUserGuess;
@@ -63,4 +80,6 @@ document.onkeyup = function (event) {
     console.log(totalUserGuess)
     //var playAgain = confirm("Play Again?");
     //added the text.content below so it would increment appropriately
+
+   
 }
