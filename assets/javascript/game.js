@@ -59,6 +59,8 @@ document.onkeyup = function (event) {
     if (userGuess === computerGuess) {
         totalUserGuess.push(userGuess);
         wins++;
+        alert("You Win!");
+        console.log(alert);
         gameReset();
         //reset game -- which means computer picks a new guess
     }
@@ -68,6 +70,7 @@ document.onkeyup = function (event) {
     }
     if (remainingGuess === 0) {
         lose++;
+        alert("You Lose...Try Again!");
         gameReset();
         //reset game? -- computer picks a new guess and remainingGuess is reset to 0
     }
